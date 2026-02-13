@@ -1,0 +1,97 @@
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-elevated: #181822;
+  --text: #e8e8ed;
+  --text-muted: #9898a8;
+  --accent: #e94560;
+  --accent-soft: rgba(233, 69, 96, 0.18);
+  --accent-glow: rgba(233, 69, 96, 0.35);
+  --accent-hover: #ff6b7a;
+  --border: #2a2a36;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 70% -20%, var(--accent-soft), transparent 50%),
+              radial-gradient(ellipse 60% 40% at 10% 60%, rgba(100, 80, 180, 0.08), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+
+section {
+  padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 5vw, 3rem);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  max-width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 2px;
+}
+
+.animate-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.animate-in.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.animate-in.in-view .animate-in--delay-1 { transition-delay: 0.06s; }
+.animate-in.in-view .animate-in--delay-2 { transition-delay: 0.12s; }
+.animate-in.in-view .animate-in--delay-3 { transition-delay: 0.18s; }
+.animate-in.in-view .animate-in--delay-4 { transition-delay: 0.24s; }
+.animate-in.in-view .animate-in--delay-5 { transition-delay: 0.3s; }

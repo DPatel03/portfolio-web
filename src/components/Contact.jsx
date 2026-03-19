@@ -1,9 +1,17 @@
+import { motion } from 'framer-motion'
 import { profile } from '../data/portfolio'
 import './Contact.css'
 
 export default function Contact() {
   return (
-    <section id="contact" className="contact animate-in">
+    <motion.section
+      id="contact"
+      className="contact"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+    >
       <h2 className="section-title">Contact</h2>
       <div className="contact__content">
         <p className="contact__text">
@@ -30,6 +38,6 @@ export default function Contact() {
           )}
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }

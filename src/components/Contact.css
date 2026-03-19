@@ -4,8 +4,9 @@
 
 .contact__text {
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  font-size: 1.05rem;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
 .contact__links {
@@ -16,25 +17,29 @@
 
 .contact__btn {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.8rem 1.75rem;
   border-radius: 8px;
   font-weight: 600;
   font-size: 0.95rem;
   background: var(--accent);
   color: #fff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.25s ease;
 }
+
 .contact__btn:hover {
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--accent-soft);
+  box-shadow: 0 8px 24px var(--accent-glow);
 }
+
 .contact__btn--outline {
   background: transparent;
   color: var(--text);
   border: 1px solid var(--border);
 }
+
 .contact__btn--outline:hover {
   color: var(--accent);
   border-color: var(--accent);
+  box-shadow: none;
 }

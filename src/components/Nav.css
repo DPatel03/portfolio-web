@@ -24,14 +24,25 @@
 }
 
 .nav__logo {
-  font-weight: 700;
-  font-size: 1.2rem;
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 1.35rem;
   color: var(--text);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   transition: color 0.2s ease;
 }
 
-.nav__logo:hover {
+.nav__logo-mark {
+  color: var(--text);
+}
+
+.nav__logo-dot {
+  color: var(--accent);
+}
+
+.nav__logo:hover .nav__logo-mark {
   color: var(--accent);
 }
 
@@ -121,5 +132,32 @@
   }
   .nav__links a::after {
     display: none;
+  }
+}
+
+.nav__resume-btn {
+  display: inline-block;
+  padding: 0.45rem 1.1rem;
+  background: var(--accent);
+  color: #fff !important;
+  border-radius: 6px;
+  font-size: 0.85rem !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.nav__resume-btn::after {
+  display: none !important;
+}
+
+.nav__resume-btn:hover {
+  color: #fff !important;
+  box-shadow: 0 4px 16px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .nav__resume {
+    margin-top: 0.5rem;
   }
 }

@@ -2,19 +2,12 @@ import { motion } from 'framer-motion'
 import { profile } from '../data/portfolio'
 import './About.css'
 
-const stats = [
-  { value: '3+', label: 'Years Building' },
-  { value: '4', label: 'Projects Shipped' },
-  { value: 'M.S.', label: 'Data Science @ BU' },
-  { value: '133K+', label: 'Records Analyzed' },
-]
-
-const statVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
+const cardVariants = {
+  hidden: { opacity: 0, y: 16 },
   visible: (i) => ({
     opacity: 1,
-    scale: 1,
-    transition: { delay: i * 0.1, duration: 0.4, ease: 'easeOut' },
+    y: 0,
+    transition: { delay: i * 0.08, duration: 0.45, ease: 'easeOut' },
   }),
 }
 
@@ -28,35 +21,41 @@ export default function About() {
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <h2 className="section-title">About</h2>
-      <div className="about__columns">
-        <div className="about__left">
-          <p className="about__text">{profile.about}</p>
-          <div className="about__meta">
-            {profile.location && (
-              <span className="about__meta-item">{profile.location}</span>
-            )}
-            {profile.email && (
-              <a href={`mailto:${profile.email}`} className="about__meta-item">
-                {profile.email}
-              </a>
-            )}
+      <h2 className="section-title">
+        <span className="section-title__num">01.</span>
+        About
+      </h2>
+
+      <div className="about__layout">
+        <div className="about__story">
+          <p className="about__lead">{profile.about}</p>
+          <p className="about__text">{profile.aboutMore}</p>
+          <div className="about__focus">
+            <span className="about__focus-label">What I work on</span>
+            <div className="about__focus-tags">
+              {profile.focusAreas.map((area) => (
+                <span key={area} className="about__focus-tag">{area}</span>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="about__right">
-          <div className="about__stats">
-            {stats.map((stat, i) => (
+
+        <div className="about__proof">
+          <p className="about__proof-heading">What I have backed this up with</p>
+          <div className="about__proof-grid">
+            {profile.proofPoints.map((point, i) => (
               <motion.div
-                key={stat.label}
-                className="about__stat"
+                key={point.label}
+                className="about__proof-card"
                 custom={i}
-                variants={statVariants}
+                variants={cardVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
               >
-                <span className="about__stat-value">{stat.value}</span>
-                <span className="about__stat-label">{stat.label}</span>
+                <span className="about__proof-value">{point.value}</span>
+                <span className="about__proof-label">{point.label}</span>
+                <span className="about__proof-context">{point.context}</span>
               </motion.div>
             ))}
           </div>

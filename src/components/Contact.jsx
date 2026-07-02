@@ -12,10 +12,14 @@ export default function Contact() {
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <h2 className="section-title">Contact</h2>
+      <h2 className="section-title">
+        <span className="section-title__num">06.</span>
+        Contact
+      </h2>
       <div className="contact__content">
+        <p className="contact__heading">Get in touch</p>
         <p className="contact__text">
-          I'm open to new opportunities and conversations. Reach out via email or LinkedIn.
+          Looking for software engineering and data engineering roles. Email or LinkedIn works best.
         </p>
         <div className="contact__links">
           <a href={`mailto:${profile.email}`} className="contact__btn">

@@ -1,55 +1,70 @@
 import { motion } from 'framer-motion'
 import { skills } from '../data/portfolio'
 import {
-  SiPython, SiTypescript, SiJavascript, SiCplusplus,
-  SiReact, SiNodedotjs, SiExpress, SiFlask,
-  SiPostgresql, SiMongodb, SiMysql, SiSqlite,
+  SiPython, SiTypescript, SiJavascript,
+  SiReact, SiNodedotjs, SiFlask, SiFastapi, SiNextdotjs,
+  SiPostgresql, SiMongodb, SiMysql, SiRedis, SiSnowflake,
   SiDocker, SiKubernetes, SiLinux, SiGit, SiGithub,
   SiPandas, SiNumpy, SiScikitlearn,
   SiStreamlit, SiPlotly,
-  SiGithubactions, SiJest, SiPytest,
-  SiApachespark
+  SiGithubactions, SiPytest,
+  SiApachespark, SiApachekafka, SiApacheairflow, SiTerraform, SiDbt,
 } from 'react-icons/si'
 import { FaJava, FaAws, FaDatabase, FaCode } from 'react-icons/fa'
 import './Skills.css'
 
 const iconMap = {
   'Python': SiPython,
+  'Bash': FaCode,
   'TypeScript': SiTypescript,
   'JavaScript': SiJavascript,
   'Java': FaJava,
-  'C++': SiCplusplus,
   'SQL': FaDatabase,
   'Flask': SiFlask,
+  'FastAPI': SiFastapi,
+  'Next.js': SiNextdotjs,
   'React': SiReact,
   'Node.js': SiNodedotjs,
-  'Express': SiExpress,
   'PostgreSQL': SiPostgresql,
+  'TimescaleDB': SiPostgresql,
   'MongoDB': SiMongodb,
   'MySQL': SiMysql,
-  'SQLite': SiSqlite,
+  'Snowflake': SiSnowflake,
+  'Redis': SiRedis,
   'Pandas': SiPandas,
   'NumPy': SiNumpy,
+  'PyArrow': FaCode,
   'PySpark': SiApachespark,
+  'Apache Kafka': SiApachekafka,
+  'Apache Airflow': SiApacheairflow,
+  'dbt': SiDbt,
+  'Kafka': SiApachekafka,
+  'Tekton': SiGithubactions,
+  'Great Expectations': FaCode,
+  'SQLAlchemy': FaCode,
+  'GPT-4o-mini': FaCode,
+  'MLflow': FaCode,
   'scikit-learn': SiScikitlearn,
   'Docker': SiDocker,
   'Kubernetes': SiKubernetes,
+  'OpenShift': SiKubernetes,
+  'Terraform': SiTerraform,
   'Linux': SiLinux,
   'Git': SiGit,
   'GitHub': SiGithub,
   'GitHub Actions': SiGithubactions,
   'AWS EC2': FaAws,
   'AWS S3': FaAws,
+  'AWS Lambda': FaAws,
   'Streamlit': SiStreamlit,
   'Plotly': SiPlotly,
   'PyTest': SiPytest,
-  'Jest': SiJest,
 }
 
 const categoryLabels = {
   software: 'Software Engineering',
   data: 'Data Engineering',
-  ai: 'AI & LLM',
+  ai: 'LLM & AI',
   ml: 'Machine Learning',
   cloud: 'Cloud & DevOps',
 }
@@ -80,6 +95,7 @@ export default function Skills() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
+        <span className="section-title__num">05.</span>
         Skills
       </motion.h2>
       <motion.div

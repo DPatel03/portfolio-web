@@ -16,6 +16,7 @@ export default function Nav() {
     { href: '#about', label: 'About' },
     { href: '#experience', label: 'Experience' },
     { href: '#projects', label: 'Projects' },
+    { href: '#education', label: 'Education' },
     { href: '#skills', label: 'Skills' },
     { href: '#contact', label: 'Contact' },
   ]
@@ -24,7 +25,8 @@ export default function Nav() {
     <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <div className="nav__inner">
         <a href="#" className="nav__logo">
-          {profile.name.split(' ')[0]}
+          <span className="nav__logo-mark">dp</span>
+          <span className="nav__logo-dot">.</span>
         </a>
         <button
           type="button"
@@ -44,6 +46,17 @@ export default function Nav() {
               </a>
             </li>
           ))}
+          <li className="nav__resume">
+            <a
+              href={profile.resumePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav__resume-btn"
+              onClick={() => setMobileOpen(false)}
+            >
+              Resume
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

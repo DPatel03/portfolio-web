@@ -22,6 +22,7 @@ export default function Experience() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
+        <span className="section-title__num">02.</span>
         Experience
       </motion.h2>
       <motion.div
@@ -32,10 +33,13 @@ export default function Experience() {
         viewport={{ once: true, margin: '-50px' }}
       >
         {experiences.map((job) => (
-          <motion.article key={job.id} className="exp-card" variants={cardVariants}>
+          <motion.article key={job.id} className={`exp-card${job.current ? ' exp-card--current' : ''}`} variants={cardVariants}>
             <div className="exp-card__header">
               <div>
-                <h3 className="exp-card__role">{job.role}</h3>
+                <div className="exp-card__role-row">
+                  <h3 className="exp-card__role">{job.role}</h3>
+                  {job.current && <span className="exp-card__current">Current</span>}
+                </div>
                 <p className="exp-card__company">{job.company}</p>
               </div>
               <div className="exp-card__badges">
@@ -43,6 +47,13 @@ export default function Experience() {
                 {job.location && <span className="exp-card__badge">{job.location}</span>}
               </div>
             </div>
+            {job.tech && (
+              <div className="exp-card__tech">
+                {job.tech.map((t) => (
+                  <span key={t} className="exp-card__tech-tag">{t}</span>
+                ))}
+              </div>
+            )}
             <ul className="exp-card__highlights">
               {job.highlights.map((item, i) => (
                 <li key={i}>{item}</li>

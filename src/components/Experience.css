@@ -48,6 +48,11 @@
   box-shadow: 0 8px 32px rgba(229, 56, 59, 0.12);
 }
 
+.exp-card--current {
+  border-left-color: var(--accent);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(229, 56, 59, 0.04) 100%);
+}
+
 .exp-card__header {
   display: flex;
   flex-wrap: wrap;
@@ -57,11 +62,31 @@
   margin-bottom: 1rem;
 }
 
+.exp-card__role-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
 .exp-card__role {
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 0.25rem;
+}
+
+.exp-card__current {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: 20px;
 }
 
 .exp-card__company {
@@ -86,6 +111,29 @@
   font-family: var(--font-mono);
   color: var(--text-muted);
   white-space: nowrap;
+}
+
+.exp-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.exp-card__tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.exp-card:hover .exp-card__tech-tag {
+  border-color: rgba(229, 56, 59, 0.2);
+  color: var(--text);
 }
 
 .exp-card__highlights {

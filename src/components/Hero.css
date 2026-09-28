@@ -22,11 +22,26 @@
 }
 
 .hero__glow {
+  --mx: 22%;
+  --my: 32%;
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(229, 56, 59, 0.1), transparent 55%),
-    radial-gradient(ellipse 45% 40% at 85% 35%, rgba(229, 56, 59, 0.06), transparent 50%);
+    radial-gradient(ellipse 42% 38% at var(--mx) var(--my), rgba(229, 56, 59, 0.16), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(229, 56, 59, 0.08), transparent 55%),
+    radial-gradient(ellipse 45% 40% at 85% 35%, rgba(229, 56, 59, 0.05), transparent 50%);
+  z-index: 0;
+  pointer-events: none;
+  transition: background 0.12s linear;
+}
+
+.hero__fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28%;
+  background: linear-gradient(to top, var(--bg), transparent);
   z-index: 0;
   pointer-events: none;
 }
@@ -91,6 +106,20 @@
   line-height: 1;
   margin-bottom: 0.6rem;
   color: var(--text);
+}
+
+.hero__name-text {
+  background: linear-gradient(120deg, #fff 0%, #e8e8ed 45%, #ff8a8c 100%);
+  background-size: 160% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: nameShine 8s ease-in-out infinite;
+}
+
+@keyframes nameShine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .hero__role-line {
@@ -243,7 +272,17 @@
   background: linear-gradient(145deg, rgba(229, 56, 59, 0.5), rgba(229, 56, 59, 0.08) 50%, var(--border));
   box-shadow:
     0 24px 48px rgba(0, 0, 0, 0.45),
+    0 12px 28px rgba(229, 56, 59, 0.08),
     0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hero__photo-wrap:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 28px 56px rgba(0, 0, 0, 0.5),
+    0 16px 36px rgba(229, 56, 59, 0.14),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
 }
 
 .hero__photo-inner {
@@ -261,6 +300,11 @@
   object-position: center 12%;
   display: block;
   transform: scale(1.02);
+  transition: transform 0.5s ease;
+}
+
+.hero__photo-wrap:hover .hero__photo {
+  transform: scale(1.06);
 }
 
 .hero__photo-fade {
@@ -272,14 +316,24 @@
 }
 
 .hero__terminal {
-  background: #0c0c12;
-  border: 1px solid var(--border);
+  background: rgba(12, 12, 18, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   max-width: 340px;
   margin: 0 auto;
   width: 100%;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.hero__terminal:hover {
+  transform: translateY(-3px);
+  border-color: rgba(229, 56, 59, 0.28);
 }
 
 .hero__terminal-bar {
@@ -379,5 +433,22 @@
 
   .hero__terminal-body {
     font-size: 0.68rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__name-text {
+    animation: none;
+    background: none;
+    color: var(--text);
+    -webkit-background-clip: unset;
+    background-clip: unset;
+  }
+
+  .hero__photo-wrap,
+  .hero__photo,
+  .hero__terminal,
+  .hero__glow {
+    transition: none;
   }
 }

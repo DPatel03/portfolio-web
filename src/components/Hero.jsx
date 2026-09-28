@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
 import { profile, terminal } from '../data/portfolio'
 import './Hero.css'
 
-const roles = ['Software Engineer', 'Data Engineer', 'Full Stack Developer']
+const roles = ['Software Engineer', 'Full Stack Developer', 'API Builder']
 
 function useTypingEffect(words, speed = 100, deleteSpeed = 60, pause = 2000) {
   const [display, setDisplay] = useState('')
@@ -36,13 +36,46 @@ function useTypingEffect(words, speed = 100, deleteSpeed = 60, pause = 2000) {
 
 export default function Hero() {
   const typed = useTypingEffect(roles)
+  const heroRef = useRef(null)
+  const glowRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  })
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 80])
+  const parallaxOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.15])
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) return undefined
+
+    const el = glowRef.current
+    if (!el) return undefined
+
+    const onMove = (e) => {
+      const rect = heroRef.current?.getBoundingClientRect()
+      if (!rect) return
+      const x = ((e.clientX - rect.left) / rect.width) * 100
+      const y = ((e.clientY - rect.top) / rect.height) * 100
+      el.style.setProperty('--mx', `${x}%`)
+      el.style.setProperty('--my', `${y}%`)
+    }
+
+    const node = heroRef.current
+    node?.addEventListener('mousemove', onMove, { passive: true })
+    return () => node?.removeEventListener('mousemove', onMove)
+  }, [])
 
   return (
-    <header className="hero" id="hero">
+    <header className="hero" id="hero" ref={heroRef}>
       <div className="hero__grid-bg" aria-hidden="true" />
-      <div className="hero__glow" aria-hidden="true" />
+      <div className="hero__glow" ref={glowRef} aria-hidden="true" />
+      <div className="hero__fade" aria-hidden="true" />
 
-      <div className="hero__container">
+      <motion.div
+        className="hero__container"
+        style={{ y: parallaxY, opacity: parallaxOpacity }}
+      >
         <motion.div
           className="hero__main"
           initial={{ opacity: 0, y: 30 }}
@@ -59,7 +92,9 @@ export default function Hero() {
             <p className="hero__location">{profile.location}</p>
           </div>
 
-          <h1 className="hero__name">{profile.name}</h1>
+          <h1 className="hero__name">
+            <span className="hero__name-text">{profile.name}</span>
+          </h1>
           <div className="hero__role-line">
             <span className="hero__typed">{typed}</span>
             <span className="hero__cursor" aria-hidden="true">|</span>
@@ -142,7 +177,7 @@ export default function Hero() {
             </div>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </header>
   )
 }

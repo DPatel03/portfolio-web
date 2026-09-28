@@ -7,10 +7,13 @@ import Education from './components/Education'
 import Skills from './components/Skills'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import BackToTop from './components/BackToTop'
+import CustomCursor from './components/CustomCursor'
 
 function App() {
   return (
     <>
+      <CustomCursor />
       <Nav />
       <main>
         <Hero />
@@ -22,6 +25,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </>
   )
 }

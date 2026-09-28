@@ -45,7 +45,9 @@
 .exp-card:hover {
   transform: translateY(-4px);
   border-left-color: var(--accent);
-  box-shadow: 0 8px 32px rgba(229, 56, 59, 0.12);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.3),
+    0 8px 28px rgba(229, 56, 59, 0.12);
 }
 
 .exp-card--current {

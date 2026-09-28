@@ -66,7 +66,10 @@ function ProjectCard({ proj, featured = false }) {
     <motion.article
       className={`proj-card${featured ? ' proj-card--featured' : ''}`}
       variants={cardVariants}
+      whileHover={{ y: -6 }}
+      transition={{ type: 'spring', stiffness: 320, damping: 24 }}
     >
+      <div className="proj-card__shine" aria-hidden="true" />
       {featured && <span className="proj-card__badge">Featured</span>}
       <h3 className="proj-card__name">{proj.name}</h3>
       <p className="proj-card__short">{proj.shortDesc}</p>
@@ -77,7 +80,9 @@ function ProjectCard({ proj, featured = false }) {
           ))}
         </div>
       )}
-      <p className="proj-card__long">{proj.longDesc}</p>
+      <div className="proj-card__reveal">
+        <p className="proj-card__long">{proj.longDesc}</p>
+      </div>
       <div className="proj-card__tech">
         {proj.tech.map((t) => (
           <span key={t} className="proj-card__tag">{t}</span>

@@ -6,16 +6,18 @@
 }
 
 .skills__category {
-  background: var(--bg-card);
+  background: rgba(15, 15, 22, 0.88);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  box-shadow: var(--depth-1);
 }
 
 .skills__category:hover {
   border-color: rgba(229, 56, 59, 0.3);
-  box-shadow: 0 4px 24px rgba(229, 56, 59, 0.08);
+  box-shadow: 0 10px 32px rgba(229, 56, 59, 0.1);
+  transform: translateY(-3px);
 }
 
 .skills__cat-title {

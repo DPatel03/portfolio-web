@@ -19,7 +19,7 @@ export default function Contact() {
       <div className="contact__content">
         <p className="contact__heading">Get in touch</p>
         <p className="contact__text">
-          Looking for software engineering and data engineering roles. Email or LinkedIn works best.
+          Looking for software engineering roles. Email or LinkedIn works best.
         </p>
         <div className="contact__links">
           <a href={`mailto:${profile.email}`} className="contact__btn">

@@ -12,6 +12,9 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   --radius: 12px;
+  --depth-1: 0 4px 16px rgba(0, 0, 0, 0.25);
+  --depth-2: 0 12px 36px rgba(0, 0, 0, 0.35);
+  --glass: rgba(15, 15, 22, 0.72);
 }
 
 *,
@@ -28,7 +31,11 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(229, 56, 59, 0.08), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 100% 20%, rgba(229, 56, 59, 0.04), transparent 45%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -100,4 +107,18 @@ section {
 ::selection {
   background: var(--accent-soft);
   color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
